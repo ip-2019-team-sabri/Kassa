@@ -15,7 +15,7 @@ public class test {
         String url = "http://10.3.56.6:8069"; // work with odoo.com account!!
         String db = "ErrasmusHB";
         String username = "anthony.moortgat@student.ehb.be";
-        String password = "";
+        String password = "kassa";
         System.out.println("Get database list");
         System.out.println("Login");
         System.out.println("--------------");
