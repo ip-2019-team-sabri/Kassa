@@ -12,7 +12,7 @@ import org.apache.xmlrpc.XmlRpcException;
 public class test {
 
     public static void main(String[] args) throws MalformedURLException, XmlRpcException {
-        String url = "http://10.3.56.6:8069"; // work with odoo.com account!!
+        String url = "http://10.3.56.6:8069";
         String db = "ErrasmusHB";
         String username = "anthony.moortgat@student.ehb.be";
         String password = "kassa";
