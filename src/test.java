@@ -12,18 +12,24 @@ import org.apache.xmlrpc.XmlRpcException;
 public class test {
 
     public static void main(String[] args) throws MalformedURLException, XmlRpcException {
+        // Data to connect with Odoo
         String url = "http://10.3.56.6:8069";
         String db = "ErrasmusHB";
         String username = "anthony.moortgat@student.ehb.be";
         String password = "kassa";
-        System.out.println("Get database list");
-        System.out.println("Login");
+
+        // Show info in console
+        System.out.println("Connection");
         System.out.println("--------------");
-        int uid = login(url,db,username,password);
+
+        // Connect with Odoo
+        int uid = Connection.login(url,db,username,password);
+
+        // Connection working or not
         if (uid >0) {
-            System.out.println("Login Ok");
+            System.out.println("Connection Ok");
         } else {
-            System.out.println("Login Fail");
+            System.out.println("Connection Fail");
         }
 
         final XmlRpcClient models = new XmlRpcClient() {{
@@ -49,6 +55,7 @@ public class test {
 // count the number of fields fetched by default
         System.out.println(record.size());
 
+        // Search customers with table names
         var list = asList((Object[])models.execute("execute_kw", asList(
                 db, uid, password,
                 "res.partner", "read",
@@ -73,6 +80,7 @@ public class test {
 //                    }})
 //        )); // creating a customer with certain criterias
 
+        // Search with parameters
         var customers = asList((Object[])models.execute("execute_kw", asList(
                 db, uid, password,
                 "res.partner", "search",
@@ -98,6 +106,7 @@ public class test {
         ))); // deleting an customer using its unique ID
     }
     // login
+    /*
     static int login(String url, String db, String login, String password) throws XmlRpcException, MalformedURLException {
         XmlRpcClient client = new XmlRpcClient();
         XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
@@ -114,4 +123,5 @@ public class test {
             return (int) uid;
         return -1;
     }
+    */
 }
